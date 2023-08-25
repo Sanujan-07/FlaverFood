@@ -55,7 +55,7 @@ app.post("/send-email", (req, res) => {
 
     const mailOptions = {
         from: req.body.useremail,
-        to: 'sammuvel936@gmail.com', //recive email and we can add many recive emails // this email testing purpos create my shelf 
+        to: 'sammuvel936@gmail.com',//recive email and we can add many recive emails // this email testing purpos create my shelf 
         subject: req.body.usersubject,
         text: `Name: ${req.body.username}\nEmail: ${req.body.useremail}\nPhone Number: ${req.body.userphone}\nMessage: ${req.body.usermessage}`
     };
