@@ -577,8 +577,20 @@ body{
 .cocoking-body{
   background-color: #000000;
 }
+.imgecoco{
+  height: 250px;
+  width: 300px;
+  object-fit: fill;
+ 
+ margin-left: 410px;
+border-radius: 25px;
+ margin-bottom: 0;
+ position:static;
+ margin-top: 15px;
+}
 .cocoking-title h1{
   color: white;
+  
 }
 .cocoking-title p{
   color: rgba(255, 255, 255, 0.962);
