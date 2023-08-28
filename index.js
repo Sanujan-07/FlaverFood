@@ -42,7 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.post("/send-email", (req, res) => {
 const transporter = nodemailer.createTransport({
-    host: 'smtp.office365.com', // Microsoft SMTP server
+    service: 'Outlook365', // Microsoft SMTP server
     port: 587, // Port for TLS/STARTTLS
     secure: false, // Use TLS
     auth: {
