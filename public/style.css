@@ -578,14 +578,14 @@ body{
   background-color: #000000;
 }
 .imgecoco{
-  height: 100px;
-  width: 150px;
+  height: 120px;
+  width: 160px;
   object-fit: fill;
  
- margin-left: 175px;
+ margin-left: 475px;
 border-radius: 15px;
- margin-bottom: 0;
- position:absolute;
+ margin-bottom: 0px;
+ position:relative;
  margin-top: 20px;
 }
 .cocoking-title h1{

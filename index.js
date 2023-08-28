@@ -41,21 +41,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.post("/send-email", (req, res) => {
-    const transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',  //this is email host
-        port:465,
-        auth: {
-            user: 'sammuvel936@gmail.com',  //This is that details handel email 
-            pass: 'wvkwzrncjmcgpvoi' //this that acount app password generate detatails handel mail account 
-        },
-        tls: {
-            rejectUnauthorized: false // Allow non-secure connections
-        }
-    });
+const transporter = nodemailer.createTransport({
+    host: 'smtp.office365.com', // Microsoft SMTP server
+    port: 587, // Port for TLS/STARTTLS
+    secure: false, // Use TLS
+    auth: {
+        user: 'info@flavorfoods.eu', // Your Microsoft email address
+        pass: 'fbbldkpvrhybnmfg' // Your email password
+    }
+    
+   
+});
 
     const mailOptions = {
-        from: req.body.useremail,
-        to: 'sammuvel936@gmail.com',//recive email and we can add many recive emails // this email testing purpos create my shelf 
+        from: 'info@flavorfoods.eu',
+        to: 'info@flavorfoods.eu',//recive email and we can add many recive emails // this email testing purpos create my shelf 
         subject: req.body.usersubject,
         text: `Name: ${req.body.username}\nEmail: ${req.body.useremail}\nPhone Number: ${req.body.userphone}\nMessage: ${req.body.usermessage}`
     };
