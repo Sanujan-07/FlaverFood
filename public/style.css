@@ -647,8 +647,9 @@ border-radius: 15px;
 .cocola-body{
   background-color: black;
 }
+
 .cocola-title h1{
-  color: white;
+  color: #ffffff;
 }
 .cocola-title p{
   color: rgba(255, 255, 255, 0.962);
@@ -671,8 +672,10 @@ border-radius: 15px;
 .cocola-body-right{
   padding-top: 60px;
 }
+
 .cocolaimg{
   padding-bottom: 50px;
+  
 }
 .cocola-body p{
   font-size: 12px;
