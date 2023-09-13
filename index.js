@@ -12,58 +12,50 @@ const port = 5000;
 const ipID = '127.0.0.1';
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'home.html'));
-});
-app.get('/home.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'home.html'));
-});
-app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, 'about.html'));
-});
+// app.get('/', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'home.html'));
+// });
+// app.get('/home.html', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'home.html'));
+// });
+// app.get('/about', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'about.html'));
+// });
 
-app.get('/contact', (req, res) => {
-    res.sendFile(path.join(__dirname, 'contact.html'));
-});
+// app.get('/contact', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'contact.html'));
+// });
 
-app.get('/cocola', (req, res) => {
-    res.sendFile(path.join(__dirname, 'cocola.html'));
-});
-app.get('/cocoking', (req, res) => {
-    res.sendFile(path.join(__dirname, 'cocoking.html'));
-});
-app.get('/royalcoco', (req, res) => {
-    res.sendFile(path.join(__dirname, 'royalcoco.html'));
-});
-app.get('/tamz', (req, res) => {
-    res.sendFile(path.join(__dirname, 'tamz.html'));
-});
-app.use(express.static(path.join(__dirname, 'public')));
+// app.get('/cocola', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'cocola.html'));
+// });
+// app.get('/cocoking', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'cocoking.html'));
+// });
+// app.get('/royalcoco', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'royalcoco.html'));
+// });
+// app.get('/tamz', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'tamz.html'));
+// });
+// app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/sitemap.xml', async (req, res) => {
-    try {
-        const sitemap = new SitemapStream({
-            hostname: 'https://flavorfoods.eu', // Replace with your website's base URL
-        });
 
-        // Define the routes you want to include in the sitemap
-        const routes = ['/', '/home.html', '/about', '/contact', '/cocola', '/cocoking', '/royalcoco', '/tamz'];
+app.get('/Sitemap.xml', (req, res) => {
+    const sitemapFilePath = path.join(__dirname, 'Sitemap.xml'); // Path to your existing sitemap.xml file
 
-        // Add the routes to the sitemap
-        routes.forEach((route) => {
-            sitemap.write({ url: route, changefreq: 'daily', priority: 0.8, lastmod: '2023-08-28' });
-        });
-
-        sitemap.end();
-        const sitemapXML = await streamToPromise(sitemap);
+    // Read the XML sitemap file
+    fs.readFile(sitemapFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            res.status(500).end();
+            return;
+        }
 
         // Set response headers
         res.header('Content-Type', 'application/xml');
-        res.status(200).send(sitemapXML);
-    } catch (error) {
-        console.error(error);
-        res.status(500).end();
-    }
+        res.status(200).send(data);
+    });
 });
 
 
