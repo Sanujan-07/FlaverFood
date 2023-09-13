@@ -12,37 +12,36 @@ const port = 5000;
 const ipID = '127.0.0.1';
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// app.get('/', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'home.html'));
-// });
-// app.get('/home.html', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'home.html'));
-// });
-// app.get('/about', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'about.html'));
-// });
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'home.html'));
+});
+app.get('/home.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'home.html'));
+});
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, 'about.html'));
+});
 
-// app.get('/contact', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'contact.html'));
-// });
+app.get('/contact', (req, res) => {
+    res.sendFile(path.join(__dirname, 'contact.html'));
+});
+app.get('/cocola', (req, res) => {
+    res.sendFile(path.join(__dirname, 'cocola.html'));
+});
+app.get('/cocoking', (req, res) => {
+    res.sendFile(path.join(__dirname, 'cocoking.html'));
+});
+app.get('/royalcoco', (req, res) => {
+    res.sendFile(path.join(__dirname, 'royalcoco.html'));
+});
+app.get('/tamz', (req, res) => {
+    res.sendFile(path.join(__dirname, 'tamz.html'));
+});
+app.use(express.static(path.join(__dirname, 'public')));
 
-// app.get('/cocola', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'cocola.html'));
-// });
-// app.get('/cocoking', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'cocoking.html'));
-// });
-// app.get('/royalcoco', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'royalcoco.html'));
-// });
-// app.get('/tamz', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'tamz.html'));
-// });
-// app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.get('/Sitemap.xml', (req, res) => {
-    const sitemapFilePath = path.join(__dirname, 'Sitemap.xml'); // Path to your existing sitemap.xml file
+app.get('/sitemap.xml', (req, res) => {
+    const sitemapFilePath = path.join(__dirname, 'sitemap.xml'); // Path to your existing sitemap.xml file
 
     // Read the XML sitemap file
     fs.readFile(sitemapFilePath, 'utf8', (err, data) => {
@@ -57,9 +56,6 @@ app.get('/Sitemap.xml', (req, res) => {
         res.status(200).send(data);
     });
 });
-
-
-
 
 app.post("/send-email", (req, res) => {
     const transporter = nodemailer.createTransport({
